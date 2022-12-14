@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./assets/img/abstract-person-blue-logo-by-Vexels.svg" type="image/x-icon">
+  <title>BankPage</title>
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/transfers.css">
+</head>
+
+<body>
+  <div id="app">
+    <main class="main-content border-radius-lg">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">BankPage</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./account.html" >Account</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./cards.html">Cards</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./transfers.html">New Transfer</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./applyLoan.html">New Loan</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" @click="logOut" href="index.html">Logout</a>
+              </li>
+
+          </div>
+        </div>
+      </nav>
+      <div class="tituloContainer">
+        <h2>Create New Transfers</h2>
+      </div>
+
+      <div class="contieneTodo">
+        <div class="contieneImg">
+          <img src="./assets/img/transfers.jpg">
+        </div>
+        <div class="contenedor-createTransfers">
+          
+
+
+          <div class="container">
+            <form>
+              <label>Select Destiny</label>
+              <select v-model="destiny">
+                <option value="From my property">From my property</option>
+                <option value="Owned by another">Owned by another</option>
+              </select>
+
+              <label>Select an account
+                <select v-model="accountOrigin">
+                  <template v-for="cuenta of cuentas">
+                    <option>{{cuenta.number}}</option>
+                  </template>
+                </select>
+              </label>
+
+
+
+              <label v-show="destiny=='From my property'">Select the destination account
+                <select v-model="cuentaDestino">
+                  {{destinationAccounts}}
+                  <template v-for="cuenta of destinationAccount">
+                    <option>{{cuenta.number}}</option>
+                  </template>
+                </select>
+              </label>
+
+              <label v-show="destiny == 'Owned by another'">Destination account
+                <input placeholder="Destination account" v-model="cuentaDestino" type="text" class="input" required="">
+              </label>
+              <label>Amount</label>
+              <input placeholder="Amount" v-model="amount" type="text" class="input" required="">
+
+
+              <label>Description</label>
+              <input placeholder="Destination" v-model="description" type="text" class="input description" required="">
+
+              
+              <button type="button" v-on:click="alerta"> Send</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  </main>
+
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script src="./transfers.js"></script>
+
+
+</body>
+
+</html>

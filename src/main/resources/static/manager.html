@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 >Home banking</h1>
+    <div id="app" class="w-100 d-flex">
+        <div class="w-50">
+        <div class="formulario">
+            <h2 class="">Client list</h2>
+            <form class="d-flex flex-column">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" v-model="nombre" required style="width: 40%;">
+                <label for="lastName">Apellido: </label>
+                <input type="text" id="lastName" v-model="apellido" required style="width: 40%;">
+                <label class="nombre" for="Email">Email: </label>
+                <input type="email" id="Email" v-model="email" class="mb-2" required="@" style="width: 40%;">
+                <button @click="addClientes" class="submit">Add Client</button>
+            </form>
+        </div>
+
+        <div class="tabla m-2">
+            <h2>Client list</h2>
+            <table>
+                <tr>
+                    <th>Amount</th>
+                    <th>ID</th>
+                    <th>Descriptions</th>
+                    <th>Type</th>
+                </tr>
+                <tr v-for="cliente of info.data[0].accounts[1].transactions">
+                    <td>{{cliente.amount}}</td>
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.description}}</td>
+                    <td>{{cliente.type}}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="w-50 p-1 h-50">
+        
+        <h2>Client REST response</h2>
+        <pre class="json">
+            {{info.data[0]}}
+        </pre>
+        
+        
+    </div>
+    </div>  
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./manager.js"></script>      
+</body>
+
+</html>

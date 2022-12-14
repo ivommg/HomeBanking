@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./assets/img/abstract-person-blue-logo-by-Vexels.svg" type="image/x-icon">
+  <title>BankPage</title>
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/card.css">
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <div id="app">
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">BankPage</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./account.html">Account</a>
+              </li>    
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./cards.html">Cards</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./transfers.html">New Transfer</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./applyLoan.html">New Loan</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" @click="logOut" href="index.html">Logout</a>
+              </li>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="border-radius-lg text-dark">
+      
+
+      <h2 v-if="cliente.cards.length==0">don't have a card yet, do you want to create one?</h2>
+
+      <form v-show="cliente.cards.length<6">
+        <div class="tipo">
+          <label>
+            <input type="radio" v-model="clase" name="clase" value="DEBIT">
+            DEBIT</label>
+          <label>
+            <input type="radio" v-model="clase" name="clase" value="CREDIT">
+            CREDIT</label>
+        </div>
+        <div class="color">
+          <label>
+            <input type="radio" v-model="color" name="color" value="SILVER">
+            SILVER</label>
+          <label>
+            <input type="radio" v-model="color" name="color" value="GOLD">
+            GOLD</label>
+          <label>
+            <input type="radio" v-model="color" name="color" value="TITANIUM">
+            TITANIUM</label>
+        </div>
+        <button class="name noselect" @click="crearCards" type="submit" v-show="cliente.cards.length<6">Create
+          Card</button>
+      </form>
+
+
+      <div class="contenedorx3">
+
+        <div class="contenedorDelContenedor" v-show="cardDebit.length">
+
+
+          <div v-for="tarjeta of cardDebit" class="contenedor">
+            
+          
+
+            <div class="cardd">
+              <div class="card__front card__part" :class="tarjeta.color">
+                <img class="card__front-square card__square" src="./assets/img/abstract-person-blue-logo-by-Vexels.svg">
+                <h2 class="card__front-logo card__logo" style="font-size: 20px;">BankPage</h2>
+                <p class="card_numer">{{tarjeta.number}}</p>
+                <div class="fechas">
+                  <div class="card__space-25">
+                    <span class="card__label">Valid From:</span>
+                    <p class="card__info">{{tarjeta.fromDate}}</p>
+                  </div>
+                  <div class="card__space-25">
+                    <span class="card__label">Expires</span>
+                    <p class="card__info">{{tarjeta.thruDate}}</p>
+                  </div>
+                </div>
+                <div class="card__space-75">
+                  <p class="card__info">{{tarjeta.cardHolder}}</p>
+                  <div class="visaTypo">
+                    <img src="./assets/img/visa.png" class="visa" alt="">
+                    <p class="type">DEBIT</p>
+
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="card__back card__part" :class="tarjeta.color">
+                <div class="card__black-line"></div>
+                <div class="card__back-content">
+                  <div class="card__secret">
+                    <p class="card__secret--last">{{tarjeta.cvv}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <button class="eliminarCard" @click="DeleteCard(tarjeta.id)"> X </button>
+          </div>
+
+
+        </div>
+
+        <div class="contenedorDelContenedor" v-show="credit.length">
+
+
+          <div v-for="tarjeta of credit" class="contenedor">
+            
+            <div class="cardd">
+              <div class="card__front card__part" :class="tarjeta.color">
+                <img class="card__front-square card__square" src="./assets/img/abstract-person-blue-logo-by-Vexels.svg">
+                <h2 class="card__front-logo card__logo" style="font-size: 20px;">BankPage</h2>
+                <p class="card_numer">{{tarjeta.number}}</p>
+                <div class="fechas">
+                  <div class="card__space-25">
+                    <span class="card__label">Valid From:</span>
+                    <p class="card__info">{{tarjeta.fromDate}}</p>
+                  </div>
+                  <div class="card__space-25">
+                    <span class="card__label">Expires</span>
+                    <p class="card__info">{{tarjeta.thruDate}}</p>
+                  </div>
+                </div>
+                <div class="card__space-75">
+                  <p class="card__info">{{tarjeta.cardHolder}}</p>
+                  <div class="visaTypo">
+                    <img src="./assets/img/visa.png" class="visa" alt="">
+                    <p class="type">CREDIT</p>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="card__back card__part" :class="tarjeta.color">
+                <div class="card__black-line"></div>
+                <div class="card__back-content">
+                  <div class="card__secret">
+                    <p class="card__secret--last">{{tarjeta.cvv}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <button class="eliminarCard" @click="DeleteCard(tarjeta.id)"> X </button>
+          </div>
+
+
+        </div>
+      </div>
+
+  </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <script src="./cards.js"></script>
+
+
+</body>
+
+</html>

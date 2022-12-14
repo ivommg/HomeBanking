@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./assets/img/abstract-person-blue-logo-by-Vexels.svg" type="image/x-icon">
+  <title>BankPage</title>
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/account.css">
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+
+  <div id="app">
+    <main class="main-content border-radius-lg text-dark">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">BankPage</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./account.html">Account</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./cards.html">Cards</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./transfers.html">New Transfer</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" href="./applyLoan.html">New Loan</a>
+              </li>
+              <li class="nav-item d-flex">
+                <a class="nav-link" @click="logOut" href="index.html">Logout</a>
+              </li>
+
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="bienvenida">
+        <h1>Welcome {{clientes.firstName}}</h1>
+        <div class="subTItulos">
+          <h4 v-if="clientes.accounts.length">Your balance</h4>
+          <form>
+            <button type="submit" @click="createAccount" v-if="clientes.accounts.length<3"
+              class="name noselect">AddAccounts</button>
+            <h5 v-else>You have reached the account limit</h5>
+          </form>
+        </div>
+      </div>
+      <div class="contenedorDelContenedor">
+        <div class='container' v-for="cuenta of clientes.accounts">
+          <div class="container-2">
+            <div class="datos-cuenta">
+              <p> <b>Account: {{cuenta.number}}</b></p>
+              <p> <b>Date: {{cuenta.creationDate}}</b></p>
+            </div>
+            <div class="cuentas">
+              <h2><b>${{cuenta.balance}}</b></h2>
+            </div>
+            <div class="button-cuentas">
+              <button><a class="text-decoration-none" style="color: #fff;"
+                  :href="'./accounts.html?id='+cuenta.id">Transactions</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="loans" v-show="loans.length">Your Loans</h4>
+      <div class="prestamosContenedor">
+        <div class="containe" v-for="loan of loans">
+          <div class="card">
+            <div class="face face1">
+              <div class="content">
+
+                <h3>{{loan.name}}</h3>
+              </div>
+            </div>
+            <div class="face face2">
+              <div class="content">
+                <p>${{loan.amount}}</p>
+                <p>payments: {{loan.payments}}</p>
+                <a href="./loan.html">More information</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./account.js"></script>
+
+
+</body>
+
+</html>

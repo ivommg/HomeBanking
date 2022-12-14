@@ -1,0 +1,342 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body{
+  background: linear-gradient(to right,#f5dd90,#652913);
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+main.main-content.border-radius-lg.text-dark {
+  /* max-height: fit-content !important; */
+  height: fit-content !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form button {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+  margin: 30px;
+	color: black;
+	background: white;
+	border: 2px solid black;
+	box-shadow: 5px 5px 0 black,
+		-5px -5px 0 black,
+		-5px 5px 0 black,
+		5px -5px 0 black;
+	transition: 500ms ease-in-out;
+}
+
+form button:hover {
+	box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+
+form button:focus {
+	outline: none;
+}
+label, input,.name button{
+  margin: 5px;
+}
+.contenedorx3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 95rem;
+}
+.contenedorDelContenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.contenedor {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.eliminarCard{
+  height: 30px;
+}
+
+.card__front.card__part{
+  width: 100%;
+}
+.card__back.card__part{
+  width: 100%;
+}
+.cardd {
+  width: 100%;
+  height: 180px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  perspective: 600px;
+  color: #fff;
+  margin: 26px
+  /* margin: 10px; */
+}
+  
+  .card__part {
+    box-shadow: 1px 1px #aaa3a3;
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    display: inline-block;
+    width: 360px;
+    height: 230px;
+    
+    border-radius: 8px;
+  
+    -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+  }
+  .SILVER{
+    background-image: url(../img/silver.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .GOLD{
+    background-image: url(../img/gold.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .TITANIUM{
+    background-image: url(../img/titanium.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .card__front {
+    padding: 8px;
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    width: 100%;
+  }
+  
+  .card__back {
+    padding: 18px 0;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    width: 100%;
+}
+  
+  .card__black-line {
+    margin-top: 5px;
+    height: 38px;
+    background-color: #303030;
+  }
+  
+  .card__logo {
+    height: 16px;
+  }
+  
+  .card__front-logo {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+  .card__square {
+    border-radius: 5px;
+    height: 30px;
+  }
+  
+  .card_numer {
+    display: block;
+    width: 100%;
+    word-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  
+  .fechas{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  .card__space-25{
+    width: 50%
+  }
+  
+  .card__label {
+    font-size: 7px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: .5px;
+  }
+  
+  .card__info {
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .card__space-75 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .visaTypo{
+    display: flex;
+    margin: 0;
+    color: #fff;
+  }
+  .card__space-75 .visa{
+    width: 75px;
+    height: 75px;
+  }
+  .visaTypo .type{
+    text-align: end;
+    font-size: 9px;
+    width: 9px;
+    height: 5px;
+  }
+  .card__back-content {
+    padding: 15px 15px 0;
+  }
+  .card__secret--last {
+    color: #303030;
+    text-align: right;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .card__secret {
+    padding: 5px 12px;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .card__secret:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    height: calc(100% + 6px);
+    width: calc(100% - 42px);
+    border-radius: 4px;
+    background: repeating-linear-gradient(
+      45deg,
+      #ededed,
+      #ededed 5px,
+      #f9f9f9 5px,
+      #f9f9f9 10px
+    );
+  }
+  
+  .card__back-logo {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .card__back-square {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+  }
+  
+  .cardd:hover .card__front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+  }
+  
+  .cardd:hover .card__back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+  }
+  .eliminarCard{
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: end;
+  }
+  
+
+/* @media(min-width:470px) {
+  .card__front.card__part {
+    width: 25rem
+  }
+} */
+
+
+  @media(min-width:768px) {
+      main{
+        height: fit-content !important;
+      }
+      .contenedorx3{
+        flex-direction: unset;
+        min-height: 110vh;
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+      }
+
+      .contenedorDelContenedor {
+        width: 100%;
+      }
+      .contenedor{
+        margin: 50rem;
+      }
+  }
+  
+
+  @media (min-width:922px) {
+    .contenedorx3 {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+    
+    }
+    .contenedor{
+      width: 90%;
+      height: 30rem;
+    }
+  }
+
+  @media(min-width:1024px){
+
+    /* .contenedorx3{
+      min-height: 90rem;
+    } */
+    .card__front.card__part {
+      width: 60%;
+    }
+    .card__back.card__back {
+      padding: 18px 0;
+      -webkit-transform: rotateY(-180deg);
+      -moz-transform: rotateY(-180deg);
+      width: 60%;
+  }
+  .contenedor{
+    width: 90%;
+  }
+  
+  
+
+  } 

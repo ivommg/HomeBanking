@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(to right,#f5dd90,#652913);
+}
+.nav{
+    background-color: #1b1b1b;
+    display: flex;
+    width: 70vw;
+    height: 5rem;
+}
+nav ol{
+    list-style-type: none;
+    color: white;
+    display: flex;
+    gap: .2rem;
+}
